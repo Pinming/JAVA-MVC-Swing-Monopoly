@@ -2,6 +2,7 @@ package BBZillionaire.main;
 
 import javax.swing.UIManager;
 
+import BBZillionaire.music.Music;
 import BBZillionaire.ui.JFrameGame;
 import BBZillionaire.ui.WaitFrame;
 import BBZillionaire.ui.config.FrameConfig;
@@ -24,5 +25,10 @@ public class Main {
 		JFrameGame frame = new JFrameGame();
 		// 建立游戏配置窗口
 		new FrameConfig(wFrame,frame);
+		Music Data=new Music();
+		new Thread(()->{while(true) {Data.playMusic();} //while中的true可换成参数来控制音乐的停止播放
+		}).start();// Lambda表达式
 	}
+
 }
+

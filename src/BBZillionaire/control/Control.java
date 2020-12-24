@@ -173,7 +173,7 @@ public class Control {
 		// panel 初始化
 		this.panel.startGamePanelInit();
 		// 游戏背景音乐
-		this.startMusic();
+//		this.startMusic();
 		// 游戏开始产生地图效果
 		this.effect.showImg("start");
 	}
@@ -184,9 +184,9 @@ public class Control {
 	 * 游戏背景音乐
 	 * 
 	 */
-	private void startMusic() {
-		music.start();
-	}
+//	private void startMusic() {
+//		music.start();
+//	}
 
 	public List<PlayerModel> getPlayers() {
 		return players;
@@ -1473,8 +1473,6 @@ public class Control {
 	 * 
 	 * 游戏结束~
 	 * 
-	 * 
-	 * @param winer
 	 */
 	public void gameOver () {
 		this.run.setNowPlayerState(GameRunning.GAME_STOP);
@@ -1482,7 +1480,7 @@ public class Control {
 		this.panel.getRunning().moveToFront();
 		this.panel.getPlayerInfo().moveToFront();
 		this.panel.getEffect().moveToFront();
-		this.music.gameOver();
+//		this.music.gameOver();
 		this.effect.showImg("timeover2");
 		
 	}

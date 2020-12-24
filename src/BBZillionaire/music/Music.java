@@ -1,33 +1,43 @@
 package BBZillionaire.music;
 
-import java.applet.AudioClip;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.SourceDataLine;
 
-public class Music {
+public class Music{
 
-	private List<AudioClip> au = new ArrayList<AudioClip>();
+	/**
+	 * 播放背景音乐
+	 */
+	public static void playMusic() {
+		try {
+			AudioInputStream ais = AudioSystem.getAudioInputStream(new File("music/万能青年旅店 - 杀死那个石家庄人.wav"));
+			AudioFormat aif = ais.getFormat();
+			final SourceDataLine sdl;
+			DataLine.Info info = new DataLine.Info(SourceDataLine.class, aif);
+			sdl = (SourceDataLine) AudioSystem.getLine(info);
+			sdl.open(aif);
+			sdl.start();
+			FloatControl fc = (FloatControl) sdl.getControl(FloatControl.Type.MASTER_GAIN);
+			// value可以用来设置音量，从0-2.0
+			double value = 2;
+			float dB = (float) (Math.log(value == 0.0 ? 0.0001 : value) / Math.log(10.0) * 20.0);
+			fc.setValue(dB);
+			int nByte = 0;
+			final int SIZE = 1024 * 64;
+			byte[] buffer = new byte[SIZE];
+			while (nByte != -1) {
+				nByte = ais.read(buffer, 0, SIZE);
+				sdl.write(buffer, 0, nByte);
+			}
+			sdl.stop();
 
-	private AudioClip gameMusic;
-
-	public Music() {
-//		au.add(JApplet.newAudioClip(getClass().getResource("1.wav")));
-//		au.add(JApplet.newAudioClip(getClass().getResource("2.wav")));
-//		au.add(JApplet.newAudioClip(getClass().getResource("3.wav")));
-//		au.add(JApplet.newAudioClip(getClass().getResource("win.wav")));
-//		au.add(JApplet.newAudioClip(getClass().getResource("lose.wav")));
-	}
-
-	public void start() {
-		//gameMusic = au.get(GameRunning.MAP - 1);
-		if (gameMusic != null) {
-			//gameMusic.loop();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-	}
-	public void gameOver() { 
-		if (gameMusic != null) {
-			//gameMusic.stop();
-		}
-		//au.get(4).play();
 	}
 }
