@@ -20,7 +20,7 @@ public class JFrameGame extends JFrame {
 		// 设置默认关闭属性（程序结束）
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// 设置窗口大小
-		this.setSize(1000, 800);
+		this.setSize(1050, 800);
 		// 不允许用户改变窗口大小
 		this.setResizable(false);
 		// 居中

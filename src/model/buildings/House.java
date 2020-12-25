@@ -32,6 +32,16 @@ public class House extends Building {
 		super(posX, posY);
 		this.maxLevel = 3;
 	}
+	
+	public int getUpLevelPrice() {
+		if (this.level == 0) {
+			this.upPrice = 500;
+		} else {
+			this.upPrice = 1000 * this.level;
+		}
+		return upPrice;
+	}
+	
 	/**
 	 * 
 	 * 获取房屋总价值

@@ -1,10 +1,7 @@
 package model.card;
 
-import javax.swing.JOptionPane;
-
 import context.GameState;
 
-import model.LandModel;
 import model.PlayerModel;
 
 /**

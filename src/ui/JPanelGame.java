@@ -79,10 +79,10 @@ public class JPanelGame extends JPanel{
 	 */
 	private void initUI() {
 		// 创建背景UI
-		this.backgroundUI = new Background(0, 0, 1000, 800,
+		this.backgroundUI = new Background(0, 0, 1050, 800,
 				control.getBackground(),this);
 		// 创建土地UI
-		this.landsUI = new Lands(posX, posY, 1000, 800, control.getLand());
+		this.landsUI = new Lands(posX, posY, 1050, 800, control.getLand());
 		// 创建房屋UI
 		this.buildingsUI = new Buildings(posX, posY, 950, 650,
 				control.getBuilding());
@@ -92,7 +92,7 @@ public class JPanelGame extends JPanel{
 		this.layerPlayersPanel = new PlayersPanel(425, 170, 170,
 				250, control.getPlayers());
 		// 文字显示面板UI
-		this.textTip = new TextTip(0,0,950,650,control.getTextTip());
+		this.textTip = new TextTip(0,0,1050,650,control.getTextTip());
 		// 骰子事件UI
 		this.dice = new Dice(425, 450, 170, 90, control);
 		// 事件显示UI
@@ -117,21 +117,17 @@ public class JPanelGame extends JPanel{
 		lays.add(backgroundUI);
 		lays.add(dice);
 		lays.add(playersUI);
-//		lays.add(textTip);
 		lays.add(layerPlayersPanel);
 		lays.add(buildingsUI);
 		lays.add(landsUI);
 		lays.add(backgroundUI);
 		lays.add(running);
 		lays.add(effect);
-		// lays.add(shop);
-		// lays.add(massageYesNo);
 
 		layeredPane = new JLayeredPane();
 		layeredPane.setLayout(null);
 
 		int add = 1;
-		//layeredPane.add(this.massageOk, add++);
 		layeredPane.add(this.event, add++);
 		layeredPane.add(this.effect, add++);
 		layeredPane.add(this.textTip, add++);
@@ -142,13 +138,7 @@ public class JPanelGame extends JPanel{
 		layeredPane.add(this.landsUI, add++);
 		layeredPane.add(this.running, add++);
 		layeredPane.add(this.backgroundUI, add++);
-//		layeredPane.add(this.shop, add++);
 		layeredPane.add(this.playerInfo,add++);
-
-		
-		//layeredPane.add(this.massageYesNo, add++);
-		//layeredPane.add(this.massageSimple, add++);
-		
 		add(layeredPane);
 	}
 

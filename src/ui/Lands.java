@@ -1,11 +1,9 @@
 package ui;
 
+import model.LandModel;
+
 import java.awt.Graphics;
 import java.awt.Image;
-
-import javax.swing.ImageIcon;
-
-import model.LandModel;
 
 
 /**
@@ -24,7 +22,7 @@ public class Lands extends Layer {
 	 * Õ¡µÿÕº∆¨
 	 */
 	private  Image landsIMG = null;
-	
+
 	protected Lands(int x, int y, int w, int h,LandModel land) {
 		super(x, y, w, h);
 		this.land =land;

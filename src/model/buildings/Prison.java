@@ -1,13 +1,8 @@
 package model.buildings;
 
-import java.util.List;
-
-import model.LandModel;
 import model.PlayerModel;
-import model.TextTipModel;
 
 import context.GameState;
-import control.Control;
 
 /**
  * 

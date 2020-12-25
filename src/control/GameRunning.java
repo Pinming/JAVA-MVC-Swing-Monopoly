@@ -92,7 +92,7 @@ public class GameRunning {
 	 * 初始化玩家初始金钱
 	 * 
 	 */
-	public static int PLAYER_CASH = 1000;
+	public static int PLAYER_CASH = 5000;
 
 	private Control control;
 

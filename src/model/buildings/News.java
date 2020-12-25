@@ -1,19 +1,10 @@
 package model.buildings;
 
-import java.awt.Graphics;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-import model.EventsModel;
-import model.LandModel;
-import model.PlayerModel;
-import model.TextTipModel;
-
 import context.GameState;
-import control.Control;
-
-import util.FileUtil;
 
 /**
  * 

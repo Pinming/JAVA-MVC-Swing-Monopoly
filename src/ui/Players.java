@@ -4,11 +4,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.util.List;
 
-import javax.swing.ImageIcon;
-
 import control.GameRunning;
 
-import model.LandModel;
 import model.PlayerModel;
 
 /**
