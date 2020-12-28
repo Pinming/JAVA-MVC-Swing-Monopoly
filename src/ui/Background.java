@@ -36,6 +36,7 @@ public class Background extends Layer {
 		this.panel = panel;
 	}
 
+	@Override
 	public void paint(Graphics g) {
 		// ªÊ÷∆±≥æ∞
 		this.paintBg(g);

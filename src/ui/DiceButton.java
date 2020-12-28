@@ -37,14 +37,17 @@ public class DiceButton extends JPanel implements MouseListener {
 		repaint();
 	}
 
+	@Override
 	public boolean isEnabled() {
 		return enabled;
 	}
 
+	@Override
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 
+	@Override
 	public void paint(Graphics g) {
 		this.setOpaque(false); // ±³¾°Í¸Ã÷
 		if (enabled){

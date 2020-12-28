@@ -37,6 +37,7 @@ public class TextTipModel extends Tick implements Port{
 	 * 开始游戏设置
 	 * 
 	 */
+	@Override
 	public void startGameInit (){}
 
 	@Override

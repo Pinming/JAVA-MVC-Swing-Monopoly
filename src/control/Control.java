@@ -8,14 +8,7 @@ import java.util.TimerTask;
 import javax.swing.JOptionPane;
 
 import model.*;
-import model.buildings.Building;
-import model.buildings.Hospital;
-import model.buildings.News;
-import model.buildings.Origin;
-import model.buildings.Park;
-import model.buildings.Point;
-import model.buildings.Prison;
-import model.buildings.Lottery;
+import model.buildings.*;
 //import model.buildings.Shop_;
 import model.card.Card;
 import model.card.TortoiseCard;
@@ -731,9 +724,13 @@ public class Control {
 		new Thread(new MyThread(run, 1)).start();
 	}
 	private void stopInChance(Building b, PlayerModel player) {
-		// 跳过，临时代码
-		this.run.nextState();
+		((Chance) b).createCards();
+		this.textTip.showTextTip(player, player.getName() + " 获得 "
+				+ ((Chance)b).getCard().getcName() , 3);
+		player.getCards().add(((Chance)b).getCard());
+		new Thread(new MyThread(run, 1)).start();
 	}
+
 	/**
 	 * 
 	 * 
@@ -1489,9 +1486,7 @@ public class Control {
 	/**
 	 * 
 	 * 游戏结束~
-	 * 
-	 * 
-	 * @param winer
+	 *
 	 */
 	public void gameOver () {
 		this.run.setNowPlayerState(GameRunning.GAME_STOP);

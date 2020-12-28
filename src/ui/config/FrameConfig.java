@@ -175,14 +175,14 @@ public class FrameConfig extends JFrame {
 		JPanel moneyPanel = new JPanel();
 		moneyPanel.setBorder(BorderFactory.createTitledBorder(""));
 		JLabel money = new JLabel("胜利金钱");
-		final String[] money_ = { "无限制", "10000", "20000", "40000", "80000",
+		final String[] money_ = { "无限制", "40000", "60000", "80000", "100000",
 				"200000" };
 		final Choice moneyChoice = new Choice();
 		for (String a : money_) {
 			moneyChoice.add(a);
 		}
-		moneyChoice.addItemListener(new ItemListener() {
 
+		moneyChoice.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent arg0) {
 				String str = money_[moneyChoice.getSelectedIndex()];

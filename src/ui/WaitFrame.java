@@ -21,8 +21,7 @@ public class WaitFrame extends JFrame {
         int width = (int) (image.getIconWidth() * i);
         int height = (int) (image.getIconHeight() * i);
         Image img = image.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT);
-        ImageIcon image2 = new ImageIcon(img);
-        return image2;
+        return new ImageIcon(img);
     }
 
     public WaitFrame() throws InterruptedException {
@@ -41,7 +40,7 @@ public class WaitFrame extends JFrame {
         // 设置启动 Logo
         ImageIcon icon = new ImageIcon("images/logo.jpg");
         // 缩放启动 Logo
-        ImageIcon icon2 = change(icon, 0.28);
+        ImageIcon icon2 = change(icon, 0.5);
         l.setIcon(icon2);
         setVisible(true);
         // 设置延迟时间

@@ -20,6 +20,7 @@ public class Event extends Layer {
 		this.events = events;
 	}
 
+	@Override
 	public void paint(Graphics g) {
 		this.paintEvent(g);
 	}
