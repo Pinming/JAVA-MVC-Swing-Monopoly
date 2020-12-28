@@ -35,26 +35,29 @@ import control.Control;
 import control.GameRunning;
 
 /**
- * 
+ *
  * 读取用户配置
- * 
+ *
  * */
 public class FrameConfig extends JFrame {
 
 	private JButton jbnStart = new JButton("开始游戏");
-	 
+
 	//private JButton jbnradom = new JButton("随机");
 	//private JButton jbnCancel = new JButton("重置设定");
 
 	private JButton jbnPlayer01 = new JButton("1P确认角色");
 	private JLabel jbnPlayerNameLabel01 = new JLabel("名字:");
 	private JTextField jbnPlayerNameField01 = new JTextField(12);
-	
+	private JButton jbnPlayerAI01 = new JButton("将1P设置为AI");
+	private static int AIStatus01 = 0;
 	//private JButton jbnPlayerName01 = new JButton("1P确认名字");
 
 	private JButton jbnPlayer02 = new JButton("2P确认角色");
 	private JLabel jbnPlayerNameLabel02 = new JLabel("名字:");
 	private JTextField jbnPlayerNameField02 = new JTextField(12);
+	private JButton jbnPlayerAI02 = new JButton("将2P设置为AI");
+	private static int AIStatus02 = 0;
 	//private JButton jbnPlayerName02 = new JButton("2P确认名字");
 
 	/**
@@ -66,7 +69,7 @@ public class FrameConfig extends JFrame {
 	 * 可选图片
 	 * */
 	private ImageIcon[] img = Photo.PLAYER_CHOOSE;
-	private String[]  pName = {"化劲","婷婷","马保国","混元形意"};
+	private String[]  pName = {"矮子","麻料","黄皮耗子","假玲"};
 	/**
 	 * 人物1
 	 **/
@@ -98,16 +101,16 @@ public class FrameConfig extends JFrame {
 	private String[] selectedName = { "", "" };
 
 	/**
-	 * 
+	 *
 	 * 主面板
-	 * 
+	 *
 	 * */
 	private JFrameGame jFrameGame;
 
 	public FrameConfig(WaitFrame wFrame,JFrameGame jFrameGame) {
 		wFrame.setVisible(false);
 		this.jFrameGame = jFrameGame;
-		setTitle("用户数据设定");
+		setTitle("BBZillionaire");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// 设置布局管理器为边界布局
 		this.setLayout(new BorderLayout());
@@ -131,16 +134,16 @@ public class FrameConfig extends JFrame {
 		this.tabs.add("人物设置", this.createPlayerSelectPanel());
 		this.tabs.setToolTipTextAt(0, "完成人物设置");
 		this.tabs.add("背景设置", this.createMapSelectPanel());
-		this.tabs.setToolTipTextAt(1, "可以设置游戏背景景");
+		this.tabs.setToolTipTextAt(1, "可以设置游戏背景");
 		this.tabs.add("游戏设置", this.createGameSelectPanel());
 		this.tabs.setToolTipTextAt(2, "可以设置游戏胜利条件等...");
 		return tabs;
 	}
 
 	/**
-	 * 
+	 *
 	 * 游戏胜利条件设置
-	 * 
+	 *
 	 */
 	private Component createGameSelectPanel() {
 		JPanel panel = new JPanel(new GridLayout(0, 1));
@@ -175,14 +178,14 @@ public class FrameConfig extends JFrame {
 		JPanel moneyPanel = new JPanel();
 		moneyPanel.setBorder(BorderFactory.createTitledBorder(""));
 		JLabel money = new JLabel("胜利金钱");
-		final String[] money_ = { "无限制", "40000", "60000", "80000", "100000",
-				"200000" };
+		final String[] money_ = { "无限制", "20000", "30000", "40000", "80000",
+				"120000" };
 		final Choice moneyChoice = new Choice();
 		for (String a : money_) {
 			moneyChoice.add(a);
 		}
-
 		moneyChoice.addItemListener(new ItemListener() {
+
 			@Override
 			public void itemStateChanged(ItemEvent arg0) {
 				String str = money_[moneyChoice.getSelectedIndex()];
@@ -211,9 +214,9 @@ public class FrameConfig extends JFrame {
 			@Override
 			public void itemStateChanged(ItemEvent arg0) {
 				String str = cash_[cashChoice.getSelectedIndex()];
-					GameRunning.PLAYER_CASH = Integer.parseInt(str);
+				GameRunning.PLAYER_CASH = Integer.parseInt(str);
 //					System.out.println(GameRunning.PLAYER_CASH);
-				}
+			}
 		});
 		cashPanel.add(cash);
 		cashPanel.add(cashChoice);
@@ -232,16 +235,16 @@ public class FrameConfig extends JFrame {
 	}
 
 	/**
-	 * 
+	 *
 	 * 地图选择面板
-	 * 
+	 *
 	 */
 	private JPanel createMapSelectPanel() {
 		JPanel jp = new JPanel();
 		jp.setLayout(new GridLayout());
 		jp.setBackground(new Color(235,236,237));
 		JPanel lPane = new JPanel(new BorderLayout());
-		String[] maps = { "\"LOVE地图\"", "\"鬼屋地图\"", "\"好运地图\"" };
+		String[] maps = { "\"地图1\"", "\"地图2\"", "\"地图3\"" };
 		final ImageIcon[] maps1 = {
 				new ImageIcon("images/other/1.png"),
 				new ImageIcon("images/other/2.png"),
@@ -353,7 +356,7 @@ public class FrameConfig extends JFrame {
 				// 设置为循环
 				if (chooses[0] <= 0) {
 					chooses[0] = img.length;
-					
+
 				}
 				jlPlayer01Choose.setIcon(img[--chooses[0]]);
 				jbnPlayerNameField01.setText(pName[chooses[0]]);
@@ -380,6 +383,7 @@ public class FrameConfig extends JFrame {
 		jp.add(rightButton01);
 		// 增加确定框
 		jbnPlayer01.setBounds(12 + x, 128 + y, 120, 30);
+		jbnPlayerAI01.setBounds(12 + x, 200 + y,120,30);
 		// 增加事件监听
 		jbnPlayer01.addActionListener(new ActionListener() {
 
@@ -398,9 +402,23 @@ public class FrameConfig extends JFrame {
 				}
 			}
 		});
+		jbnPlayerAI01.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(jbnPlayerAI01.getText() == "将1P设置为AI") {
+					jbnPlayerAI01.setText("已设置为AI");
+					AIStatus01 = 1;
+				} else {
+					jbnPlayerAI01.setText("将1P设置为AI");
+					AIStatus01 = 0;
+				}
+				System.out.println(AIStatus01);
+			}
+		});
+
 		jp.add(jbnPlayer01);
 		jp.add(jlPlayer01Selected);
 		jp.add(jlPlayer01Choose);
+		jp.add(jbnPlayerAI01);
 		// 增加名字框
 		jbnPlayerNameLabel01.setBounds(x + 12, y + 128 + 36, 50, 30);
 		jbnPlayerNameField01.setBounds(x + 12 + 30, y + 128 + 36, 120 - 30, 30);
@@ -472,6 +490,7 @@ public class FrameConfig extends JFrame {
 		jp.add(rightButton02);
 		// 增加确定框
 		jbnPlayer02.setBounds(12 + x, 128 + y, 120, 30);
+		jbnPlayerAI02.setBounds(12 + x, 200 + y, 120,30);
 		// 增加事件监听
 		jbnPlayer02.addActionListener(new ActionListener() {
 
@@ -490,9 +509,20 @@ public class FrameConfig extends JFrame {
 				}
 			}
 		});
+		jbnPlayerAI02.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(jbnPlayerAI02.getText().equals("将2P设置为AI")) {
+					jbnPlayerAI02.setText("已设置为AI");
+				} else {
+					jbnPlayerAI02.setText("将2P设置为AI");
+				}
+			}
+		});
 		jp.add(jbnPlayer02);
 		jp.add(jlPlayer02Selected);
 		jp.add(jlPlayer02Choose);
+		jp.add(jbnPlayerAI02);
 		// 增加名字框
 		jbnPlayerNameLabel02.setBounds(x + 12, y + 128 + 36, 50, 30);
 		jbnPlayerNameField02.setBounds(x + 12 + 30, y + 128 + 36, 120 - 30, 30);
@@ -516,9 +546,9 @@ public class FrameConfig extends JFrame {
 	}
 
 	/**
-	 * 
+	 *
 	 * 图标按钮
-	 * 
+	 *
 	 * */
 	public JButton createButton(int x, int y, ImageIcon[] img, char keyLinstenr) {
 		JButton add = new JButton("", img[0]);
@@ -534,7 +564,7 @@ public class FrameConfig extends JFrame {
 	 */
 	private JPanel createButtonPanel() {
 		JPanel jp = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		
+
 		// 开始按钮添加监听器
 		jbnStart.addActionListener(new ActionListener() {
 
@@ -542,7 +572,7 @@ public class FrameConfig extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (selected[0] < 0 || selected[1] < 0) {
 					JOptionPane.showMessageDialog(null, "请完成人物设置!");
-				} 
+				}
 //				else if (selectedName[0].equals("")
 //						|| selectedName[1].equals("")) {
 //					JOptionPane.showMessageDialog(null, "请完成名字设置!");
@@ -554,7 +584,7 @@ public class FrameConfig extends JFrame {
 						startGame();
 					}
 				}
-			}	
+			}
 
 			/**
 			 * 开始游戏
@@ -580,9 +610,17 @@ public class FrameConfig extends JFrame {
 				// 传入使用角色编号
 				tempPlayer.get(0).setPart(selected[0]);
 				tempPlayer.get(1).setPart(selected[1]);
+				// 传入 AI 状态
+				if(AIStatus01 == 1){
+					tempPlayer.get(0).setAIEnabled(true);
+				}
+				if(AIStatus02 == 1){
+					tempPlayer.get(1).setAIEnabled(true);
+				}
 				// 传入 角色对立角色
 				tempPlayer.get(0).setOtherPlayer(tempPlayer.get(1));
 				tempPlayer.get(1).setOtherPlayer(tempPlayer.get(0));
+
 			}
 
 		});
