@@ -38,7 +38,8 @@ public class BackgroundModel extends Tick implements Port{
 	 * 开始游戏设置
 	 * 
 	 */
-	public void startGameInit (){
+	@Override
+    public void startGameInit (){
 		this.bg = new ImageIcon("images/background/bg_0"+GameRunning.MAP+".jpg").getImage();
 	}
 		

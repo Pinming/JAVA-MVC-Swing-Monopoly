@@ -271,6 +271,7 @@ public class PlayerModel extends Tick implements Port {
 	 * 开始游戏设置
 	 * 
 	 */
+	@Override
 	public void startGameInit() {
 		// 初始化玩家图像
 		this.initPlayerIMG();

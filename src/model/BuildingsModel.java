@@ -129,7 +129,8 @@ public class BuildingsModel extends Tick implements Port{
 	 * 开始游戏设置
 	 * 
 	 */
-	public void startGameInit (){
+	@Override
+    public void startGameInit (){
 		// 初始化房屋
 		initBuilding();
 	}

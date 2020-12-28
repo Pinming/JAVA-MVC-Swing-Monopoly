@@ -1,21 +1,19 @@
 package control;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.swing.JOptionPane;
-
+import context.GameState;
 import model.*;
 import model.buildings.*;
-//import model.buildings.Shop_;
 import model.card.Card;
 import model.card.TortoiseCard;
 import music.Music;
 import ui.JPanelGame;
 import util.MyThread;
-import context.GameState;
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 
@@ -726,8 +724,10 @@ public class Control {
 	private void stopInChance(Building b, PlayerModel player) {
 		((Chance) b).createCards();
 		this.textTip.showTextTip(player, player.getName() + " »ñµÃ "
-				+ ((Chance)b).getCard().getcName() , 3);
-		player.getCards().add(((Chance)b).getCard());
+				+ ((Chance) b).getCard().getcName(), 3);
+		player.getCards().add(((Chance) b).getCard());
+		((Chance) b).getCard().setOwner(player);
+		((Chance) b).getCard().getOwner().setOtherPlayer(player.getOtherPlayer());
 		new Thread(new MyThread(run, 1)).start();
 	}
 
