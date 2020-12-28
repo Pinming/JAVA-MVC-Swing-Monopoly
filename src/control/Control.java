@@ -521,12 +521,11 @@ public class Control {
 			// 停留在监狱
 			stopInPrison(b, player);
 			break;
-//		case GameState.SHOP_EVENT:
-//			// 停留在商店
-//			stopInShop(b, player);
-//			break;
+		case GameState.CHANCE_EVENT:
+			// 停留在商店
+			stopInChance(b, player);
+			break;
 		}
-
 	}
 
 //	/**
@@ -728,7 +727,7 @@ public class Control {
 		player.getCards().add(((Chance) b).getCard());
 		((Chance) b).getCard().setOwner(player);
 		((Chance) b).getCard().getOwner().setOtherPlayer(player.getOtherPlayer());
-		new Thread(new MyThread(run, 1)).start();
+//		new Thread(new MyThread(run, 1)).start();
 	}
 
 	/**
