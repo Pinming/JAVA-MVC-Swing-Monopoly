@@ -620,7 +620,6 @@ public class FrameConfig extends JFrame {
 				// 传入 角色对立角色
 				tempPlayer.get(0).setOtherPlayer(tempPlayer.get(1));
 				tempPlayer.get(1).setOtherPlayer(tempPlayer.get(0));
-
 			}
 
 		});

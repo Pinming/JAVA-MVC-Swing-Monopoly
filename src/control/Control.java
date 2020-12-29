@@ -727,7 +727,7 @@ public class Control {
 		player.getCards().add(((Chance) b).getCard());
 		((Chance) b).getCard().setOwner(player);
 		((Chance) b).getCard().getOwner().setOtherPlayer(player.getOtherPlayer());
-//		new Thread(new MyThread(run, 1)).start();
+		new Thread(new MyThread(run, 1)).start();
 	}
 
 	/**
