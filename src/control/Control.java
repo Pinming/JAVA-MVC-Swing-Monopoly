@@ -723,7 +723,7 @@ public class Control {
 	private void stopInChance(Building b, PlayerModel player) {
 		((Chance) b).createCards();
 		this.textTip.showTextTip(player, player.getName() + " »ñµÃ "
-				+ ((Chance) b).getCard().getcName(), 3);
+				+ ((Chance) b).getCard().getcName() + "¿¨", 3);
 		player.getCards().add(((Chance) b).getCard());
 		((Chance) b).getCard().setOwner(player);
 		((Chance) b).getCard().getOwner().setOtherPlayer(player.getOtherPlayer());
