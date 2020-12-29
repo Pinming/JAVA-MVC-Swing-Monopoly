@@ -1,38 +1,21 @@
 package ui.config;
 
-import java.awt.BorderLayout;
-import java.awt.Choice;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import control.Control;
+import control.GameRunning;
+import model.PlayerModel;
+import ui.JFrameGame;
+import ui.WaitFrame;
+import util.FrameUtil;
+
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.List;
-
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
-import model.PlayerModel;
-import ui.JFrameGame;
-import ui.WaitFrame;
-import util.FrameUtil;
-import control.Control;
-import control.GameRunning;
 
 /**
  *
@@ -68,8 +51,8 @@ public class FrameConfig extends JFrame {
 	/**
 	 * 可选图片
 	 * */
-	private ImageIcon[] img = Photo.PLAYER_CHOOSE;
-	private String[]  pName = {"矮子","麻料","黄皮耗子","假玲"};
+	private final ImageIcon[] img = Photo.PLAYER_CHOOSE;
+	private final String[]    pName = {"超级马里奥", "利威尔兵长", "皮卡丘", "白娘子"};
 	/**
 	 * 人物1
 	 **/

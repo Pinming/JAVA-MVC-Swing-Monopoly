@@ -791,7 +791,8 @@ public class Control {
 	private void upHouseLevel(Building b, PlayerModel player) {
 		if (b.canUpLevel()) {
 			// Éý¼¶·¿ÎÝ
-			int price = b.getUpLevelPrice();
+			b = (House) b;
+			int price =b.getUpLevelPrice();
 			String name = b.getName();
 			String upName = b.getUpName();
 			int choose = JOptionPane.showConfirmDialog(null,
