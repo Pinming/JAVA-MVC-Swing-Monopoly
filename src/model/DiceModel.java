@@ -192,7 +192,6 @@ public class DiceModel extends Tick implements Port {
 	
 	@Override
 	public void startGameInit() {
-		
 		// 初始化骰子状态为“产生点数状态”
 		this.diceState = DiceModel.DICE_POINT;
 		// 初始化按钮可以点击

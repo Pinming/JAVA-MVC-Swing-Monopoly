@@ -160,6 +160,14 @@ public class Control {
 		this.startMusic();
 		// 游戏开始产生地图效果
 		this.effect.showImg("start");
+		// 当玩家 1 为 AI 时，使其自动走出第一步
+		if(getRunning().getPlayers().get(0).getAIEnabled()){
+			/* For Debug
+			System.out.println("当前玩家 0: AI: " + getPlayers().get(0).getAIEnabled());
+			System.out.println("当前玩家 0: " + getPlayers().get(0).getName());
+			*/
+			pressButton();
+		}
 	}
 
 	

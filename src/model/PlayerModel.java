@@ -112,12 +112,15 @@ public class PlayerModel extends Tick implements Port {
 	/**
 	 * AI 功能控制开关
 	 */
-	public static boolean isAIEnabled = false;
+	public boolean isAIEnabled = false;
 
 	public PlayerModel(int number, Control control) {
 		this.name = "";
 		this.number = number;
 		this.control = control;
+	}
+	public boolean getAIEnabled(){
+		return isAIEnabled;
 	}
 
 	public List<Card> getCards() {
@@ -273,13 +276,13 @@ public class PlayerModel extends Tick implements Port {
 	 * 设置 AI 状态
 	 */
 	public void setAIEnabled(boolean isAIEnabled) {
-		PlayerModel.isAIEnabled = isAIEnabled;
+		this.isAIEnabled = isAIEnabled;
 	}
 
 	/**
 	 * 获取 AI 状态
 	 */
-	public static boolean isAIEnabled() {
+	public boolean isAIEnabled() {
 		return isAIEnabled;
 	}
 

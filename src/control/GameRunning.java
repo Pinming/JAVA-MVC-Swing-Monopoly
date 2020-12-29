@@ -17,6 +17,8 @@ import ui.JPanelGame;
  */
 public class GameRunning {
 
+
+
 	/**
 	 * 玩家列表
 	 */
@@ -135,6 +137,10 @@ public class GameRunning {
 				this.nextPlayer();
 				// 产生一个点数
 				this.setPoint((int) (Math.random() * 6));
+				// 如果 AI 启动，则自动掷骰子（第一步以后）
+				if(getNowPlayer().getAIEnabled()){
+					control.pressButton();
+				}
 				// 完毕后执行下一个玩家的动作 - STATE_CARD
 				this.control.useCards();
 			}
@@ -168,6 +174,7 @@ public class GameRunning {
 	 * 换人操作
 	 */
 	private void nextPlayer() {
+
 		// 减少时间
 		if (this.nowPlayer.getInPrison() > 0) {
 			this.nowPlayer.setInPrison(this.nowPlayer.getInPrison() - 1);
@@ -183,6 +190,7 @@ public class GameRunning {
 			// 结束后游戏天数增加
 			day++;
 		}
+
 	}
 
 	/**
@@ -232,6 +240,10 @@ public class GameRunning {
 
 	public int getDay() {
 		return day;
+	}
+
+	public List<PlayerModel> getPlayers() {
+		return players;
 	}
 
 	/**
